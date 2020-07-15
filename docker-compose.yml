@@ -49,9 +49,3 @@ services:
     ports:
       - '9042:9042'
     restart: unless-stopped
-
-volumes:
-  zookeeper_data:
-    driver: local
-  kafka_data:
-    driver: local

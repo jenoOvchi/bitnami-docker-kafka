@@ -19,8 +19,6 @@ services:
       - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
       - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://192.168.10.2:9093
       - KAFKA_INTER_BROKER_LISTENER_NAME=CLIENT
-    depends_on:
-      - zookeeper
     restart: unless-stopped
   kafkadrop:
     image: 'obsidiandynamics/kafdrop:latest'
@@ -28,8 +26,6 @@ services:
       - '8080:9000'
     environment:
       - KAFKA_BROKERCONNECT=192.168.10.2:9093
-    depends_on:
-      - kafka
     restart: unless-stopped
   elasticsearch:
     image: 'elasticsearch:7.7.0'
